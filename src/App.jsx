@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Component } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default class App extends Component {
+  state = {
+    count: 0,
+  }
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+  constructor(props) {
+    super(props)
+    console.log('React: constructor')
+    console.log(props)
+  }
+
+  // NOTE: This method not re-render, which the documentation of React version 16.2.0 suggests that if you want to set the initial value of the state, do it at the constructor() instead.
+  componentWillMount() {
+    console.log('React: componentWillMount')
+    console.log(this.props.a);
+  }
+
+  componentDidMount() {
+    console.log('React: componentDidMount')
+  }
+
+  componentWillUnmount() {
+    console.log('React: componentWillUnmount')
+  }
+
+  shouldComponentUpdate() {
+    console.log('React: shouldComponentUpdate')
+    return true
+  }
+
+  componentDidUpdate() {
+    console.log('React: componentDidUpdate')
+  }
+
+
+  render() {
+    console.log('React: render')
+    return (
+      <>
+        <div>Number is {this.state.count}</div>
+        <button
+          type='button'
+          onClick={() => this.setState({ count: this.state.count + 1 })}
+        >
+          Count {this.state.count}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+        <button type='button' onClick={() => this.setState({ count: 0 })}>
+          Set Zero
+        </button>
+      </>
+    )
+  }
 }
-
-export default App
