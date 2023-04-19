@@ -33,12 +33,11 @@ export default class App extends Component {
     console.log('React: componentDidUpdate')
   }
 
-
   render() {
     console.log('React: render')
     return (
       <>
-        <div>Number is {this.state.count}</div>
+        <h1>Number is {this.state.count}</h1>
         <button
           type='button'
           onClick={() => this.setState({ count: this.state.count + 1 })}
@@ -48,7 +47,21 @@ export default class App extends Component {
         <button type='button' onClick={() => this.setState({ count: 0 })}>
           Set Zero
         </button>
+        <ChildComponent name='Nat nopphawong'/>
       </>
+    )
+  }
+}
+
+class ChildComponent extends Component {
+  constructor(props) {
+    super(props)
+    console.log(props)
+  }
+
+  render() {
+    return (
+      <h3>{this.props.name}</h3>
     )
   }
 }
