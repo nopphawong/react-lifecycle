@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 
 export default class App extends Component {
-  state = {
-    count: 0,
-  }
-
   constructor(props) {
     super(props)
     console.log('React: constructor')
     console.log(props)
+    this.state = {
+      count: 0,
+    }
   }
 
   // NOTE: This method not re-render, which the documentation of React version 16.2.0 suggests that if you want to set the initial value of the state, do it at the constructor() instead.
