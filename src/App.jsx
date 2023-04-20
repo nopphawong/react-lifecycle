@@ -13,7 +13,6 @@ export default class App extends Component {
   // NOTE: This method not re-render, which the documentation of React version 16.2.0 suggests that if you want to set the initial value of the state, do it at the constructor() instead.
   componentWillMount() {
     console.log('React: componentWillMount')
-    console.log(this.props.a);
   }
 
   componentDidMount() {
